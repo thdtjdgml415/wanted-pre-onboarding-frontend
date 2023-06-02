@@ -10,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
 
   const movePage = () => {
-    navigate("/signin");
+    navigate("/signin", { replace: true });
   };
 
   useEffect(() => {
