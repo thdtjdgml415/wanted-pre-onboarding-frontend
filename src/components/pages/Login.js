@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { client } from "../../api/client";
 
 function Login() {
   const [loginIdValue, setLoginIdValue] = useState("");
   const [loginPwValue, setLoginPwValue] = useState("");
 
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
+  const navigate = useNavigate();
+
+  const movePage = () => {
+    navigate("/todo");
+  };
 
   useEffect(() => {
     //이메일과 패스워드가 둘다 true일때 disabled를 true로 설정
@@ -24,7 +30,6 @@ function Login() {
     // 비밀번호는 8자리 이하여야 함
     return password.length >= 8;
   };
-
   const handleLogin = async (event) => {
     // console.log("event", event);
     event.preventDefault();
@@ -37,21 +42,21 @@ function Login() {
       return;
     }
     // alert("로그인 성공");
-    // console.log("loginIdValue", loginIdValue);
-    // console.log("loginPwValue", loginPwValue);
+    console.log("joinIdValue", loginIdValue);
+    console.log("joinPwValue", loginPwValue);
+
     try {
-      const response = await axios.post(
-        " https://www.pre-onboarding-selection-task.shop/auth/signin",
-        {
-          headers: { "Content-Type": "application/json" },
-          data: {
-            loginIdValue,
-            loginPwValue,
-          },
-        }
-      );
-      if (response.status === 200 && response.data.token) {
-        localStorage.setItem("token", response.data.token);
+      console.log(loginIdValue);
+      console.log(loginPwValue);
+      const response = await client.post("/auth/signin", {
+        email: loginIdValue,
+        password: loginPwValue,
+      });
+      console.log("response", response);
+      if (response.status === 200 && response.data.access_token) {
+        console.log("로그인 성공");
+        localStorage.setItem("token", response.data.access_token);
+        movePage();
       } else {
         alert("로그인 실패");
       }

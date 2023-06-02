@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Todo() {
   return (
     <>
       <div>Home</div>
@@ -11,4 +11,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Todo;

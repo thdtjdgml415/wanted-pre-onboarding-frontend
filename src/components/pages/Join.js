@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { client } from "../../api/client";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [joinIdValue, setJoinIdValue] = useState("");
   const [joinPwValue, setJoinPwValue] = useState("");
 
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
+  const navigate = useNavigate();
+
+  const movePage = () => {
+    navigate("/signin");
+  };
 
   useEffect(() => {
     //이메일과 패스워드가 둘다 true일때 disabled를 true로 설정
@@ -25,7 +31,7 @@ function Login() {
     return password.length >= 8;
   };
 
-  const handleLogin = async (event) => {
+  const handleJoin = async (event) => {
     // console.log("event", event);
     event.preventDefault();
     if (!validateEmail(joinIdValue)) {
@@ -37,23 +43,21 @@ function Login() {
       return;
     }
     // alert("로그인 성공");
-    // console.log("loginIdValue", loginIdValue);
-    // console.log("loginPwValue", loginPwValue);
+    console.log("joinIdValue", joinIdValue);
+    console.log("joinPwValue", joinPwValue);
+
     try {
-      const response = await axios.post(
-        " https://www.pre-onboarding-selection-task.shop/auth/signin",
-        {
-          headers: { "Content-Type": "application/json" },
-          data: {
-            joinIdValue,
-            joinPwValue,
-          },
-        }
-      );
-      if (response.status === 200 && response.data.token) {
-        localStorage.setItem("token", response.data.token);
+      // console.log(joinIdValue);
+      // console.log(joinPwValue);
+      const response = await client.post("/auth/signup", {
+        email: joinIdValue,
+        password: joinPwValue,
+      });
+      if (response.status === 201) {
+        console.log("회원가입 성공");
+        movePage();
       } else {
-        alert("로그인 실패");
+        alert("회원가입 실패");
       }
     } catch (error) {
       console.log(error);
@@ -62,12 +66,12 @@ function Login() {
 
   return (
     <section className="container">
-      <div className="loginWrapper">
+      <div className="joinWrapper">
         <h1>회원가입</h1>
         <div>
-          <label htmlFor="loginIdInput"> </label>
+          <label htmlFor="joinIdInput"> </label>
           <input
-            id="loginIdInput"
+            id="joinIdInput"
             placeholder="이메일"
             // value={email}
             data-testid="email-input"
@@ -75,10 +79,10 @@ function Login() {
           />
         </div>
         <div>
-          <label htmlFor="loginPwInput"> </label>
+          <label htmlFor="joinPwInput"> </label>
           <input
             type="password"
-            id="loginPwInput"
+            id="joinPwInput"
             placeholder="비밀번호"
             // value={password}
             data-testid="password-input"
@@ -86,10 +90,10 @@ function Login() {
           />
         </div>
         <button
-          id="loginBtn"
-          data-testid="signin-button"
+          id="joinBtn"
+          data-testid="signup-button"
           disabled={!isbuttonDisabled}
-          onClick={handleLogin}
+          onClick={handleJoin}
         >
           가입하기
         </button>
