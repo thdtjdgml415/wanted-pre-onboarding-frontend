@@ -26,7 +26,7 @@ function Login() {
   };
 
   const handleLogin = async (event) => {
-    console.log("event", event);
+    // console.log("event", event);
     event.preventDefault();
     if (!validateEmail(loginIdValue)) {
       alert("이메일 형식이 잘못되었습니다.");
@@ -36,16 +36,17 @@ function Login() {
       alert("비밀번호는 8자리 이상이여야 함");
       return;
     }
-    alert("로그인 성공");
-
+    // alert("로그인 성공");
+    // console.log("loginIdValue", loginIdValue);
+    // console.log("loginPwValue", loginPwValue);
     try {
       const response = await axios.post(
         " https://www.pre-onboarding-selection-task.shop/auth/signin",
         {
-          header: { "Content-Type": "application/json" },
-          body: {
-            email: loginIdValue,
-            password: loginPwValue,
+          headers: { "Content-Type": "application/json" },
+          data: {
+            loginIdValue,
+            loginPwValue,
           },
         }
       );
@@ -63,37 +64,35 @@ function Login() {
     <section className="container">
       <div className="loginWrapper">
         <h1>로그인</h1>
-        <form onSubmit={handleLogin}>
-          <div>
-            <label htmlFor="loginIdInput"> </label>
-            <input
-              id="loginIdInput"
-              placeholder="이메일"
-              // value={email}
-              data-testid="email-input"
-              onChange={(e) => setLoginIdValue(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="loginPwInput"> </label>
-            <input
-              type="password"
-              id="loginPwInput"
-              placeholder="비밀번호"
-              // value={password}
-              data-testid="password-input"
-              onChange={(e) => setLoginPwValue(e.target.value)}
-            />
-          </div>
-          <button
-            type="submit"
-            id="loginBtn"
-            data-testid="signin-button"
-            disabled={!isbuttonDisabled}
-          >
-            로그인
-          </button>
-        </form>
+        <div>
+          <label htmlFor="loginIdInput"> </label>
+          <input
+            id="loginIdInput"
+            placeholder="이메일"
+            // value={email}
+            data-testid="email-input"
+            onChange={(e) => setLoginIdValue(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="loginPwInput"> </label>
+          <input
+            type="password"
+            id="loginPwInput"
+            placeholder="비밀번호"
+            // value={password}
+            data-testid="password-input"
+            onChange={(e) => setLoginPwValue(e.target.value)}
+          />
+        </div>
+        <button
+          id="loginBtn"
+          data-testid="signin-button"
+          disabled={!isbuttonDisabled}
+          onClick={handleLogin}
+        >
+          로그인
+        </button>
       </div>
     </section>
   );
