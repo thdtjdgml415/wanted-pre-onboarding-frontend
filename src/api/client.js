@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const client = axios.create({
+export const instance = axios.create({
   baseURL: "https://www.pre-onboarding-selection-task.shop",
   headers: {
     "Access-Control-Allow-Origin": "*",
@@ -8,11 +8,20 @@ export const client = axios.create({
   },
 });
 
-client.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem("access_token");
+instance.interceptors.request.use(
+  (config) => {
+    console.log("config", config);
+    console.log("config.headers", config.headers);
+    const accessToken = localStorage.getItem("token");
+    console.log("accessToken", accessToken);
 
-  if (accessToken && config.headers) {
-    config.headers["Authorization"] = `Bearer ${accessToken}`;
+    if (accessToken && config.headers) {
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    console.log("error", error);
+    return Promise.reject(error);
   }
-  return config;
-});
+);

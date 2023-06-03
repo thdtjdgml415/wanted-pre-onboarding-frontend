@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { client } from "../../api/client";
+import { instance } from "../../api/client";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -49,7 +49,7 @@ function Login() {
     try {
       // console.log(joinIdValue);
       // console.log(joinPwValue);
-      const response = await client.post("/auth/signup", {
+      const response = await instance.post("/auth/signup", {
         email: joinIdValue,
         password: joinPwValue,
       });

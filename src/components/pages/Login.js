@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { client } from "../../api/client";
+import { instance } from "../../api/client";
 
 function Login() {
   const [loginIdValue, setLoginIdValue] = useState("");
@@ -10,8 +10,20 @@ function Login() {
   const navigate = useNavigate();
 
   const movePage = () => {
-    navigate("/", { replace: true });
+    navigate("/todo", { replace: true });
   };
+
+  const isToken = () => {
+    navigate("/todo", { replace: true });
+  };
+
+  useEffect(() => {
+    //토큰이 존재할 시 다시 로그인 페이지로 접속하면 페이지 리다이렉션
+    if (localStorage.getItem("token")) {
+      console.log("이미 토큰이 존재합니다.");
+      isToken();
+    }
+  }, []);
 
   useEffect(() => {
     //이메일과 패스워드가 둘다 true일때 disabled를 true로 설정
@@ -42,26 +54,25 @@ function Login() {
       return;
     }
     // alert("로그인 성공");
-    console.log("joinIdValue", loginIdValue);
-    console.log("joinPwValue", loginPwValue);
+    // console.log("joinIdValue", loginIdValue);
+    // console.log("joinPwValue", loginPwValue);
 
     try {
-      console.log(loginIdValue);
-      console.log(loginPwValue);
-      const response = await client.post("/auth/signin", {
+      // console.log(loginIdValue);
+      // console.log(loginPwValue);
+      const response = await instance.post("/auth/signin", {
         email: loginIdValue,
         password: loginPwValue,
       });
-      console.log("response", response);
+      console.log("로그인할때 받는 응답response", response);
       if (response.status === 200 && response.data.access_token) {
-        console.log("로그인 성공");
         localStorage.setItem("token", response.data.access_token);
         movePage();
       } else {
         alert("로그인 실패");
       }
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
     }
   };
 
