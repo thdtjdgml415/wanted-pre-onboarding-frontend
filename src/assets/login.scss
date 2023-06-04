@@ -1,42 +1,34 @@
-.container {
-  width: 100vw;
-  height: 100vh;
+.loginWrapper {
+  width: 700px;
+  height: 500px;
+  border: 1px solid #000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  .loginWrapper {
-    width: 700px;
-    height: 500px;
-    border: 1px solid #000;
+  h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  > div {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
 
-    h1 {
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-
-    > div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    #loginIdInput {
-      width: 200px;
-      height: 30px;
-    }
-    #loginPwInput {
-      width: 200px;
-      height: 30px;
-    }
-    #loginBtn {
-      width: 207px;
-      height: 30px;
-    }
+  #loginIdInput {
+    width: 200px;
+    height: 30px;
+  }
+  #loginPwInput {
+    width: 200px;
+    height: 30px;
+  }
+  #loginBtn {
+    width: 207px;
+    height: 30px;
   }
 }

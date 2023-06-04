@@ -10,10 +10,10 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    console.log("config", config);
-    console.log("config.headers", config.headers);
+    // console.log("config", config);
+    // console.log("config.headers", config.headers);
     const accessToken = localStorage.getItem("token");
-    console.log("accessToken", accessToken);
+    // console.log("accessToken", accessToken);
 
     if (accessToken && config.headers) {
       config.headers["Authorization"] = `Bearer ${accessToken}`;

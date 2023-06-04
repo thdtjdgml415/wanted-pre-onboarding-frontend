@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { instance } from "../../api/client";
+import { instance } from "../api/client";
 
 function Login() {
   const [loginIdValue, setLoginIdValue] = useState("");
