@@ -6,7 +6,7 @@ import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   const [getTodoData, setGetTodoData] = useState([]);
-  const [todoValue, setTodoValue] = useState();
+  const [todoValue, setTodoValue] = useState("");
 
   useEffect(() => {
     fetchTodoList();
@@ -20,9 +20,9 @@ const TodoList = () => {
 
   // console.log(getTodoData);
   const addTodoList = (todoValue) => {
-    console.log(todoValue.target.value);
+    // console.log(todoValue.target.value);
     setTodoValue(todoValue.target.value);
-    console.log("추가할 글 ");
+    console.log("추가할 글");
   };
 
   const addTodoBtn = async () => {
@@ -30,6 +30,15 @@ const TodoList = () => {
       todo: todoValue,
     });
     console.log("데이터를 추가한 list 발동", response);
+    fetchTodoList();
+    onReset();
+  };
+
+  const onReset = () => {
+    setTodoValue("");
+  };
+
+  const onDeleteTodo = () => {
     fetchTodoList();
   };
 
@@ -46,7 +55,7 @@ const TodoList = () => {
       <ul>
         {getTodoData.map((data) => {
           // console.log("리스트 map", data);
-          return <TodoItem key={data.id} data={data} />;
+          return <TodoItem key={data.id} data={data} onDelete={onDeleteTodo} />;
         })}
       </ul>
     </div>
