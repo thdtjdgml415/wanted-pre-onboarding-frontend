@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { instance } from "../api/client";
 import TodoItem from "./TodoItem";
+import Input from "./atom/Input";
 
 // console.log("TodoList client", instance);
 
@@ -25,6 +26,7 @@ const TodoList = () => {
     console.log("추가할 글");
   };
 
+  //글 추가
   const addTodoBtn = async () => {
     const response = await instance.post(`/todos`, {
       todo: todoValue,
@@ -38,27 +40,32 @@ const TodoList = () => {
     setTodoValue("");
   };
 
+  //삭제시 리렌더링
   const onDeleteTodo = () => {
+    console.log("삭제함");
+    fetchTodoList();
+  };
+  //checkbox추가시 리렌더링
+  const updateTodoList = () => {
+    // console.log("완료표시 후 렌더링");
     fetchTodoList();
   };
 
   return (
-    <div>
-      <input
-        value={todoValue}
-        onChange={addTodoList}
-        data-testid="new-todo-input"
-      ></input>
-      <button data-testid="new-todo-add-button" onClick={addTodoBtn}>
-        추가
-      </button>
+    <>
+      <div>
+        <Input value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
+        <button data-testid="new-todo-add-button" onClick={addTodoBtn}>
+          추가
+        </button>
+      </div>
       <ul>
         {getTodoData.map((data) => {
           // console.log("리스트 map", data);
-          return <TodoItem key={data.id} data={data} onDelete={onDeleteTodo} />;
+          return <TodoItem key={data.id} data={data} onDelete={onDeleteTodo} updateTodoList={updateTodoList} />;
         })}
       </ul>
-    </div>
+    </>
   );
 };
 

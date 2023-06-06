@@ -15,6 +15,7 @@ function Todo() {
     <>
       <div className="container">
         <div className="todoWrapper">
+          <h1>Todo</h1>
           <div className="todoInner">
             <TodoList />
           </div>
