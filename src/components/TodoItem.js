@@ -1,77 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { instance } from "../api/client";
-import Input from "./atom/Input";
 
 const TodoItem = ({ data, onDelete, updateTodoList }) => {
-  const [isTodoCompleted, setIsTodoCompleteCompleted] = useState(data.isCompleted);
+  const [isTodoCompleted, setIsTodoCompleted] = useState(data.isCompleted);
   const [isEditing, setIsEditing] = useState(false);
-  const [updateData, setUpdateData] = useState("");
+  const [updateData, setUpdateData] = useState(data.todo);
 
-  const handleComplete = (e) => {
-    // console.log(e);
-    setIsTodoCompleteCompleted(e.target.checked);
-    updateTodo();
+  const handleComplete = async (e) => {
+    setIsTodoCompleted(e.target.checked);
+    try {
+      await instance.put(`/todos/${data.id}`, {
+        todo: updateData,
+        isCompleted: e.target.checked,
+      });
+      updateTodoList();
+    } catch (error) {
+      console.error("Failed to update todo: ", error);
+    }
   };
 
   const handleEditClick = () => {
     setIsEditing(true);
-  };
-
-  useEffect(() => {
-    updateTodo();
-  }, [isTodoCompleted]);
-
-  const updateTodo = async () => {
-    const response = await instance.put(`/todos/${data.id}`, {
-      todo: data.todo,
-      isCompleted: isTodoCompleted,
-    });
-    // console.log(response);
-    if (response.status === 200) {
-      console.log("업데이트 완료");
-      updateTodoList();
-    }
-    // console.log("CheckBox 추가 후 응답", response);
+    setUpdateData(data.todo);
   };
 
   const handleEditSubmit = async () => {
-    const response = await instance.put(`/todos/${data.id}`, {
-      todo: updateData,
-      isCompleted: isTodoCompleted,
-    });
-    console.log(response);
-    setIsEditing(false);
-    updateTodoList();
+    try {
+      await instance.put(`/todos/${data.id}`, {
+        todo: updateData,
+        isCompleted: isTodoCompleted,
+      });
+      setIsEditing(false);
+      updateTodoList();
+    } catch (error) {
+      alert("글을 입력해주세요");
+      console.error("Failed to update todo: ", error);
+    }
   };
 
   const handleEditChange = (e) => {
-    console.log(e.target.value);
     setUpdateData(e.target.value);
   };
 
-  const deleteTodoList = async () => {
-    const response = await instance.delete(`/todos/${data.id}`);
-    console.log("삭제 후 응답", response);
-    onDelete();
+  const deleteTodo = async () => {
+    try {
+      await instance.delete(`/todos/${data.id}`);
+      onDelete();
+    } catch (error) {
+      console.error("Failed to delete todo: ", error);
+    }
   };
 
   return (
     <li>
       <label>
         <input type="checkbox" checked={data.isCompleted} onChange={handleComplete}></input>
-        {isEditing ? (
-          <Input
-            value={isEditing ? updateData : data?.todo}
-            onChange={handleEditChange}
-            // onBlur={handleInputBlur}
-          />
-        ) : (
-          <span>{data?.todo}</span>
-        )}
+        {isEditing ? <input value={updateData} onChange={handleEditChange} /> : <span>{data?.todo}</span>}
       </label>
       <div className="todoBtnWrap">
         {isEditing ? (
-          <button data-testid="submit-button" onClick={handleEditSubmit}>
+          <button type="text" data-testid="submit-button" onClick={handleEditSubmit}>
             제출
           </button>
         ) : (
@@ -79,6 +67,7 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
             수정
           </button>
         )}
+
         {isEditing ? (
           <button
             data-testid="cancel-button"
@@ -89,7 +78,7 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
             취소
           </button>
         ) : (
-          <button data-testid="delete-button" onClick={deleteTodoList}>
+          <button data-testid="delete-button" onClick={deleteTodo}>
             삭제
           </button>
         )}

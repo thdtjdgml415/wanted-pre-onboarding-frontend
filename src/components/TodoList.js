@@ -54,7 +54,7 @@ const TodoList = () => {
   return (
     <>
       <div>
-        <Input value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
+        <input value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
         <button data-testid="new-todo-add-button" onClick={addTodoBtn}>
           추가
         </button>
