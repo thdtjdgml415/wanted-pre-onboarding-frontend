@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
 
 function Login() {
-  // const [loginIdValue, setLoginIdValue] = useState("");
-  // const [loginPwValue, setLoginPwValue] = useState("");
   const [loginValue, setLoginValue] = useState({
     loginEmail: "",
     loginPwd: "",
@@ -12,7 +10,11 @@ function Login() {
   const { loginEmail, loginPwd } = loginValue;
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
-  console.log(loginValue);
+  // console.log(loginValue);
+
+  const goJoinPage = () => {
+    navigate("/signup");
+  };
 
   const movePage = () => {
     navigate("/todo", { replace: true });
@@ -37,15 +39,12 @@ function Login() {
 
   useEffect(() => {
     //이메일과 패스워드가 둘다 true일때 disabled를 true로 설정
-    setIsButtonDisabled(
-      validateEmail(loginValue.loginEmail) &&
-        validatePassword(loginValue.loginPwd)
-    );
+    setIsButtonDisabled(validateEmail(loginValue.loginEmail) && validatePassword(loginValue.loginPwd));
   }, [loginValue]);
 
   const validateEmail = (email) => {
     // 이메일 유효성 검사를 위한 정규식
-    console.log("email", email);
+    // console.log("email", email);
     const re = /[@]/;
     return re.test(email);
   };
@@ -66,13 +65,8 @@ function Login() {
       alert("비밀번호는 8자리 이상이여야 함");
       return;
     }
-    // alert("로그인 성공");
-    // console.log("joinIdValue", loginIdValue);
-    // console.log("joinPwValue", loginPwValue);
 
     try {
-      // console.log(loginIdValue);
-      // console.log(loginPwValue);
       const response = await instance.post("/auth/signin", {
         email: loginValue.loginEmail,
         password: loginValue.loginPwd,
@@ -93,7 +87,7 @@ function Login() {
     <section className="container">
       <div className="loginWrapper">
         <h1>로그인</h1>
-        <div>
+        <div className="loginEmailArea">
           <label htmlFor="loginIdInput"> </label>
           <input
             id="loginIdInput"
@@ -104,7 +98,7 @@ function Login() {
             onChange={handleLoginInput}
           />
         </div>
-        <div>
+        <div className="loginPwdArea">
           <label htmlFor="loginPwInput"> </label>
           <input
             type="password"
@@ -115,13 +109,11 @@ function Login() {
             data-testid="password-input"
             onChange={handleLoginInput}
           />
+          <div className="goJoin" onClick={goJoinPage}>
+            회원가입
+          </div>
         </div>
-        <button
-          id="loginBtn"
-          data-testid="signin-button"
-          disabled={!isbuttonDisabled}
-          onClick={handleLogin}
-        >
+        <button id="loginBtn" data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleLogin}>
           로그인
         </button>
       </div>

@@ -1,7 +1,51 @@
-.modifyBtn {
-  background-color: #000;
+.addTodoListBtn {
+  background-color: #db4c3f;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #f2f2;
+  }
 }
 
-.deleteBtn {
-  background-color: #f2f2;
+.submitTodoListBtn {
+  border: none;
+  background-color: #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 35px;
+}
+
+.modifyTodoListBtn {
+  border: none;
+  background-color: #db4c3f;
+  border-radius: 10px;
+  padding: 5px;
+  height: 35px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f2f2;
+  }
+}
+
+.deleteTodoListBtn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 35px;
+  &:hover {
+    background-color: #f2f2;
+  }
+}
+
+.cancelTodoListBtn {
+  border: none;
+  background-color: #db4c3f;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 35px;
+  &:hover {
+    background-color: #f2f2;
+  }
 }

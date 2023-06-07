@@ -1,21 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Main() {
-  const navigate = useNavigate();
-  const handleMoveLogin = () => {
-    navigate("/signin", { replace: true });
-  };
-  const hnadleMoveJoin = () => {
-    navigate("/signup", { replace: true });
-  };
-
   return (
-    <>
-      <div>Home</div>
-      <div onClick={handleMoveLogin}>로그인</div>
-      <div onClick={hnadleMoveJoin}>회원가입</div>
-    </>
+    <div className="mainWrap">
+      <div>
+        <h1 className="mainTitle">Home</h1>
+        <div className="mainLinkWrap">
+          <Link to="/todo">투두리스트</Link>
+
+          <Link to="/signin">로그인</Link>
+
+          <Link to="/signup">회원가입</Link>
+        </div>
+      </div>
+    </div>
   );
 }
 

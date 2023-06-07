@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Button from "./atom/Button";
 import { instance } from "../api/client";
 
 const TodoItem = ({ data, onDelete, updateTodoList }) => {
@@ -54,33 +55,34 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
   return (
     <li>
       <label>
-        <input type="checkbox" checked={data.isCompleted} onChange={handleComplete}></input>
+        <input type="checkbox" checked={data.isCompleted} onChange={handleComplete} className="todoTitle"></input>
         {isEditing ? <input value={updateData} onChange={handleEditChange} /> : <span>{data?.todo}</span>}
       </label>
       <div className="todoBtnWrap">
         {isEditing ? (
-          <button type="text" data-testid="submit-button" onClick={handleEditSubmit}>
+          <Button classnames={"submitTodoListBtn"} type="text" data-testid="submit-button" onClick={handleEditSubmit}>
             제출
-          </button>
+          </Button>
         ) : (
-          <button data-testid="modify-button" onClick={handleEditClick}>
+          <Button classnames={"modifyTodoListBtn"} data-testid="modify-button" onClick={handleEditClick}>
             수정
-          </button>
+          </Button>
         )}
 
         {isEditing ? (
-          <button
+          <Button
+            classnames={"cancelTodoListBtn"}
             data-testid="cancel-button"
             onClick={() => {
               setIsEditing(false);
             }}
           >
             취소
-          </button>
+          </Button>
         ) : (
-          <button data-testid="delete-button" onClick={deleteTodo}>
+          <Button classnames={"deleteTodoListBtn"} data-testid="delete-button" onClick={deleteTodo}>
             삭제
-          </button>
+          </Button>
         )}
       </div>
     </li>

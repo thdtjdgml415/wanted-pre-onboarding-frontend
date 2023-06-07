@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import Header from "./components/layout/Header";
 import Todo from "./pages/Todo";
 import Login from "./pages/Login";
 import Join from "./pages/Join";
@@ -12,7 +11,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/Todo" element={<Todo />} />
+          <Route path="/todo" element={<Todo />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<Join />} />
         </Routes>

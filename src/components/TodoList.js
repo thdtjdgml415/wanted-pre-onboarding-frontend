@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { instance } from "../api/client";
 import TodoItem from "./TodoItem";
-import Input from "./atom/Input";
+import Button from "./atom/Button";
+import { useNavigate } from "react-router-dom";
 
 // console.log("TodoList client", instance);
 
 const TodoList = () => {
   const [getTodoData, setGetTodoData] = useState([]);
   const [todoValue, setTodoValue] = useState("");
+  const navigate = useNavigate();
+
+  const GoBack = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
-    fetchTodoList();
-    console.log("첫 렌더링시 발동 과 Todo 추가시 발동");
+    if (localStorage.getItem("token")) {
+      fetchTodoList();
+      // console.log("첫 렌더링시 발동 과 Todo 추가시 발동");
+    }
   }, []);
 
   const fetchTodoList = async () => {
@@ -23,7 +31,7 @@ const TodoList = () => {
   const addTodoList = (todoValue) => {
     // console.log(todoValue.target.value);
     setTodoValue(todoValue.target.value);
-    console.log("추가할 글");
+    // console.log("추가할 글");
   };
 
   //글 추가
@@ -54,14 +62,16 @@ const TodoList = () => {
   return (
     <>
       <div>
-        <input value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
-        <button data-testid="new-todo-add-button" onClick={addTodoBtn}>
+        <input className="addTodoListInput" value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
+        <Button classnames={"addTodoListBtn"} attr="new-todo-add-button" onClick={addTodoBtn}>
           추가
-        </button>
+        </Button>
+        <div className="back" onClick={GoBack}>
+          뒤로
+        </div>
       </div>
       <ul>
         {getTodoData.map((data) => {
-          // console.log("리스트 map", data);
           return <TodoItem key={data.id} data={data} onDelete={onDeleteTodo} updateTodoList={updateTodoList} />;
         })}
       </ul>

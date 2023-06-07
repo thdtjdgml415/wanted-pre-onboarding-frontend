@@ -12,13 +12,20 @@
     margin-bottom: 20px;
   }
 
-  > div {
+  .loginEmailArea {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
   }
-
+  .goJoin {
+    font-size: 0.5rem;
+    margin: 5px 0;
+    text-decoration: underline;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
   #loginIdInput {
     width: 200px;
     height: 30px;
@@ -30,5 +37,14 @@
   #loginBtn {
     width: 207px;
     height: 30px;
+    background-color: #db4c3f;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    &:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: auto;
+    }
   }
 }

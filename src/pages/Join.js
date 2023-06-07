@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
 
-function Login() {
-  // const [loginIdValue, setLoginIdValue] = useState("");
-  // const [loginPwValue, setLoginPwValue] = useState("");
+function Join() {
   const [joinValue, setJoinValue] = useState({
     joinEmail: "",
     joinPwd: "",
@@ -12,7 +10,7 @@ function Login() {
   const { joinEmail, joinPwd } = joinValue;
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
-  console.log(joinValue);
+  // console.log(joinValue);
 
   const movePage = () => {
     navigate("/signin", { replace: true });
@@ -37,20 +35,18 @@ function Login() {
 
   useEffect(() => {
     //이메일과 패스워드가 둘다 true일때 disabled를 true로 설정
-    setIsButtonDisabled(
-      validateEmail(joinValue.joinEmail) && validatePassword(joinValue.joinPwd)
-    );
+    setIsButtonDisabled(validateEmail(joinValue.joinEmail) && validatePassword(joinValue.joinPwd));
   }, [joinValue]);
 
   const validateEmail = (email) => {
     // 이메일 유효성 검사를 위한 정규식
-    console.log("email", email);
+    // console.log("email", email);
     const re = /[@]/;
     return re.test(email);
   };
 
   const validatePassword = (password) => {
-    console.log("password", password);
+    // console.log("password", password);
     // 비밀번호는 8자리 이하여야 함
     return password.length >= 8;
   };
@@ -65,23 +61,18 @@ function Login() {
       alert("비밀번호는 8자리 이상이여야 함");
       return;
     }
-    // alert("로그인 성공");
-    // console.log("joinIdValue", loginIdValue);
-    // console.log("joinPwValue", loginPwValue);
 
     try {
-      // console.log(loginIdValue);
-      // console.log(loginPwValue);
-      const response = await instance.post("/auth/signon", {
+      const response = await instance.post("/auth/signup", {
         email: joinValue.joinEmail,
         password: joinValue.joinPwd,
       });
-      console.log("로그인할때 받는 응답response", response);
-      if (response.status === 200 && response.data.access_token) {
-        localStorage.setItem("token", response.data.access_token);
+      console.log("회원가입할때 받는 응답response", response);
+      if (response.status === 201) {
+        alert("회원가입이 완료되었습니다.");
         movePage();
       } else {
-        alert("로그인 실패");
+        alert("회원가입 실패");
       }
     } catch (error) {
       alert(error.response.data.message);
@@ -91,7 +82,7 @@ function Login() {
   return (
     <section className="container">
       <div className="joinWrapper">
-        <h1>로그인</h1>
+        <h1>회원가입</h1>
         <div>
           <label htmlFor="joinIdInput"> </label>
           <input
@@ -115,17 +106,12 @@ function Login() {
             onChange={handleJoinInput}
           />
         </div>
-        <button
-          id="joinBtn"
-          data-testid="signin-button"
-          disabled={!isbuttonDisabled}
-          onClick={handleJoin}
-        >
-          로그인
+        <button id="joinBtn" data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleJoin}>
+          회원가입
         </button>
       </div>
     </section>
   );
 }
 
-export default Login;
+export default Join;

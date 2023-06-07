@@ -29,5 +29,16 @@
   #joinBtn {
     width: 207px;
     height: 30px;
+    width: 207px;
+    height: 30px;
+    background-color: #db4c3f;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    &:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: auto;
+    }
   }
 }
