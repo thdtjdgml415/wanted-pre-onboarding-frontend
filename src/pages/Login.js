@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
 
@@ -20,9 +20,9 @@ function Login() {
     navigate("/todo", { replace: true });
   };
 
-  const isToken = () => {
+  const isToken = useCallback(() => {
     navigate("/todo", { replace: true });
-  };
+  }, [navigate]);
 
   useEffect(() => {
     //토큰이 존재할 시 다시 로그인 페이지로 접속하면 페이지 리다이렉션
@@ -30,7 +30,7 @@ function Login() {
       console.log("이미 토큰이 존재합니다.");
       isToken();
     }
-  }, []);
+  }, [navigate, isToken]);
 
   const handleLoginInput = (e) => {
     const { value, name } = e.target;

@@ -9,7 +9,7 @@ function Todo() {
     if (!localStorage.getItem("token")) {
       navigate("/signin");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <>
