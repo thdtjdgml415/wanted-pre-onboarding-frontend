@@ -33,7 +33,7 @@
         border: 1px solid #000;
         font-size: 0.9rem;
         &:hover {
-          background-color: #db4c3f;
+          background-color: #da5a4f;
         }
       }
     }
@@ -53,7 +53,9 @@
         label {
           width: 100%;
           text-align: left;
-          .todoTitle {
+          input[type="checkbox"] {
+            -webkit-transform: scale(1.4);
+            margin-right: 10px;
           }
           span {
             font-size: 1.4rem;

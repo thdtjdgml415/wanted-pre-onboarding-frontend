@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
 import TodoItem from "./TodoItem";
 import Button from "./atom/Button";
-import { useNavigate } from "react-router-dom";
-
-// console.log("TodoList client", instance);
 
 const TodoList = () => {
   const [getTodoData, setGetTodoData] = useState([]);
@@ -36,12 +34,20 @@ const TodoList = () => {
 
   //글 추가
   const addTodoBtn = async () => {
-    const response = await instance.post(`/todos`, {
-      todo: todoValue,
-    });
-    console.log("데이터를 추가한 list 발동", response);
-    fetchTodoList();
-    onReset();
+    try {
+      const response = await instance.post(`/todos`, {
+        todo: todoValue,
+      });
+      console.log("데이터를 추가한 list 발동", response);
+      fetchTodoList();
+      onReset();
+    } catch (error) {
+      if (error.response.status === 400) {
+        alert("글을 입력해주세요");
+        return;
+      }
+      console.log(error);
+    }
   };
 
   const onReset = () => {

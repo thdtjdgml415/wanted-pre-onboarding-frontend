@@ -55,7 +55,7 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
   return (
     <li>
       <label>
-        <input type="checkbox" checked={data.isCompleted} onChange={handleComplete} className="todoTitle"></input>
+        <input type="checkbox" checked={data.isCompleted} onChange={handleComplete} className="todoCheck"></input>
         {isEditing ? <input value={updateData} onChange={handleEditChange} /> : <span>{data?.todo}</span>}
       </label>
       <div className="todoBtnWrap">
