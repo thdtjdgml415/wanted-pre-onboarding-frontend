@@ -11,11 +11,20 @@ function Todo() {
     }
   }, [navigate]);
 
+  const GoBack = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <div className="container">
         <div className="todoWrapper">
-          <h1>Todo</h1>
+          <div className="back" onClick={GoBack}>
+            뒤로
+          </div>
+          <div className="todoHeader">
+            <h1>Todo</h1>
+          </div>
           <div className="todoInner">
             <TodoList />
           </div>

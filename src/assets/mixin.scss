@@ -1,0 +1,46 @@
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin colum {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin jcsb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin button {
+  background: linear-gradient(0deg, #9775fa 0%, rgba(2, 126, 251, 1) 100%);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 1.1rem;
+  &.small {
+    width: 60px;
+    height: 30px;
+  }
+  &.big {
+    width: 207px;
+    height: 30px;
+  }
+  &:hover {
+    background: #fff;
+    // border: 1px solid #000;
+    color: #000;
+  }
+  &:disabled {
+    background: #ccc;
+    color: #666;
+    cursor: auto;
+  }
+}

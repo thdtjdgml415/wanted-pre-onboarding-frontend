@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
+import Button from "../components/atom/Button";
 
 function Login() {
   const [loginValue, setLoginValue] = useState({
@@ -82,7 +83,6 @@ function Login() {
       alert(error.response.data.message);
     }
   };
-
   return (
     <section className="container">
       <div className="loginWrapper">
@@ -113,9 +113,9 @@ function Login() {
             회원가입
           </div>
         </div>
-        <button id="loginBtn" data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleLogin}>
+        <Button classnames={"Btn big"} data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleLogin}>
           로그인
-        </button>
+        </Button>
       </div>
     </section>
   );

@@ -60,18 +60,18 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
       </label>
       <div className="todoBtnWrap">
         {isEditing ? (
-          <Button classnames={"submitTodoListBtn"} type="text" data-testid="submit-button" onClick={handleEditSubmit}>
+          <Button classnames={"Btn small"} type="text" data-testid="submit-button" onClick={handleEditSubmit}>
             제출
           </Button>
         ) : (
-          <Button classnames={"modifyTodoListBtn"} data-testid="modify-button" onClick={handleEditClick}>
+          <Button classnames={"Btn small"} data-testid="modify-button" onClick={handleEditClick}>
             수정
           </Button>
         )}
 
         {isEditing ? (
           <Button
-            classnames={"cancelTodoListBtn"}
+            classnames={"Btn small"}
             data-testid="cancel-button"
             onClick={() => {
               setIsEditing(false);
@@ -80,7 +80,7 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
             취소
           </Button>
         ) : (
-          <Button classnames={"deleteTodoListBtn"} data-testid="delete-button" onClick={deleteTodo}>
+          <Button classnames={"Btn small"} data-testid="delete-button" onClick={deleteTodo}>
             삭제
           </Button>
         )}

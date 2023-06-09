@@ -3,15 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
 import TodoItem from "./TodoItem";
 import Button from "./atom/Button";
+// import { disabled } from "../api/disabled";
 
 const TodoList = () => {
   const [getTodoData, setGetTodoData] = useState([]);
   const [todoValue, setTodoValue] = useState("");
+  const [isdisabled, setIsdisabled] = useState(true);
   const navigate = useNavigate();
-
-  const GoBack = () => {
-    navigate("/");
-  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -27,6 +25,7 @@ const TodoList = () => {
 
   // console.log(getTodoData);
   const addTodoList = (todoValue) => {
+    // disabled(todoValue);
     // console.log(todoValue.target.value);
     setTodoValue(todoValue.target.value);
     // console.log("추가할 글");
@@ -69,12 +68,9 @@ const TodoList = () => {
     <>
       <div>
         <input className="addTodoListInput" value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
-        <Button classnames={"addTodoListBtn"} attr="new-todo-add-button" onClick={addTodoBtn}>
+        <Button classnames={"Btn small"} attr="new-todo-add-button" onClick={addTodoBtn}>
           추가
         </Button>
-        <div className="back" onClick={GoBack}>
-          뒤로
-        </div>
       </div>
       <ul>
         {getTodoData.map((data) => {
