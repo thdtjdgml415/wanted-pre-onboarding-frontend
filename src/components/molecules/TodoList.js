@@ -20,10 +20,7 @@ const TodoList = () => {
     setGetTodoData(response.data);
   };
 
-  // console.log(getTodoData);
   const addTodoList = (todoValue) => {
-    // disabled(todoValue);
-    // console.log(todoValue.target.value);
     setTodoValue(todoValue.target.value);
     // console.log("추가할 글");
   };
@@ -34,8 +31,15 @@ const TodoList = () => {
       const response = await instance.post(`/todos`, {
         todo: todoValue,
       });
-      console.log("데이터를 추가한 list 발동", response);
-      fetchTodoList();
+      setGetTodoData([
+        ...getTodoData,
+        {
+          id: response.data.id,
+          isCompleted: response.data.isCompleted,
+          todo: response.data.todo,
+          userId: response.data.userId,
+        },
+      ]);
       onReset();
     } catch (error) {
       if (error.response.status === 400) {
@@ -52,7 +56,7 @@ const TodoList = () => {
 
   //삭제시 리렌더링
   const onDeleteTodo = () => {
-    console.log("삭제함");
+    // console.log("삭제함");
     fetchTodoList();
   };
   //checkbox추가시 리렌더링

@@ -10,7 +10,6 @@ function Login() {
   const { loginEmail, loginPwd } = loginValue;
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
-  // console.log(loginValue);
 
   const goJoinPage = () => {
     navigate("/signup");
@@ -44,18 +43,15 @@ function Login() {
 
   const validateEmail = (email) => {
     // 이메일 유효성 검사를 위한 정규식
-    // console.log("email", email);
     const re = /[@]/;
     return re.test(email);
   };
 
   const validatePassword = (password) => {
-    console.log("password", password);
     // 비밀번호는 8자리 이하여야 함
     return password.length >= 8;
   };
   const handleLogin = async (event) => {
-    // console.log("event", event);
     event.preventDefault();
     if (!validateEmail(loginValue.loginEmail)) {
       alert("이메일 형식이 잘못되었습니다.");
@@ -71,7 +67,6 @@ function Login() {
         email: loginValue.loginEmail,
         password: loginValue.loginPwd,
       });
-      console.log("로그인할때 받는 응답response", response);
       if (response.status === 200 && response.data.access_token) {
         localStorage.setItem("token", response.data.access_token);
         movePage();

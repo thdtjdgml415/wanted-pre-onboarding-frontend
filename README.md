@@ -69,15 +69,19 @@ src
 │   ├──mixin.scss : scss 에서 사용가능한 mixin 코드를 모아놓은 파일
 │   ├──todo.scss : Todo관련 스타일코드
 │   ├──reset.scss : 개발초기 스타일주기 전 모든 기본스타일 초기화
-│   ├──style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
+│   └──style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
 ├──components: 재사용 가능한 컴포넌트
 │   ├──atom : 재사용 가능한 컴포넌트 가장 작은 단위
+│   │     ├── Button : Todo 와 그 하위컴포넌트에 사용한 Button 컴포넌트
+│   │     └── Input : Todo 와 그 하위컴포넌트에 사용한 Input 컴포넌트
 │   ├──molecules : atom을 조합하여 사용하여 만든 컴포넌트
-├──pages : 페이지 단위
-│   ├──Join : 회원가입 페이지
-│   ├──Login : 로그인 페이지
-│   ├──Main : 메인 페이지
-│   ├──Todo : Todo리스트 페이지
+│   │     ├── TodoItem : todoList의 상세내용 컴포넌트
+│   │     └── TodoList : todoList 전체 제어컴포넌트
+│   └──pages : 페이지 단위
+│      ├──Join : 회원가입 페이지
+│      ├──Login : 로그인 페이지
+│      ├──Main : 메인 페이지
+│      └──Todo : Todo리스트 페이지
 ├──api: API 호출 관련 코드
-│   ├──client : api관련 axios 관련 기본 설정
+│   └──client : api관련 axios 관련 기본 설정
 ```

@@ -10,7 +10,7 @@ function Join() {
   const { joinEmail, joinPwd } = joinValue;
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
-  console.log(joinValue);
+  // console.log(joinValue);
 
   const movePage = () => {
     navigate("/signin", { replace: true });
@@ -23,7 +23,7 @@ function Join() {
   useEffect(() => {
     //토큰이 존재할 시 다시 로그인 페이지로 접속하면 페이지 리다이렉션
     if (localStorage.getItem("token")) {
-      console.log("이미 토큰이 존재합니다.");
+      // console.log("이미 토큰이 존재합니다.");
       isToken();
     }
   }, [navigate, isToken]);
@@ -52,7 +52,6 @@ function Join() {
     return password.length >= 8;
   };
   const handleJoin = async (event) => {
-    // console.log("event", event);
     event.preventDefault();
     if (!validateEmail(joinValue.joinEmail)) {
       alert("이메일 형식이 잘못되었습니다.");
@@ -68,7 +67,6 @@ function Join() {
         email: joinValue.joinEmail,
         password: joinValue.joinPwd,
       });
-      console.log("회원가입할때 받는 응답response", response);
       if (response.status === 201) {
         alert("회원가입이 완료되었습니다.");
         movePage();
