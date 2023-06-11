@@ -62,21 +62,21 @@
 ```bash
 src
 ├──assets: scss 스타일 관련 페이지
-│├──button.scss : 버튼 공통 스타일코드
-│├──join.scss : 회원가입 관련 스타일코드
-│├──login.scss : 로그인 관련 스타일코드
-│├──main.scss : 메인화면 관련 스타일코드
-│├──mixin.scss : scss 에서 사용가능한 mixin 코드를 모아놓은 파일
-│├──todo.scss : Todo관련 스타일코드
-│├──reset.scss : 개발초기 스타일주기 전 모든 기본스타일 초기화
-│├──style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
+│   ├──button.scss : 버튼 공통 스타일코드
+│   ├──join.scss : 회원가입 관련 스타일코드
+│   ├──login.scss : 로그인 관련 스타일코드
+│   ├──main.scss : 메인화면 관련 스타일코드
+│   ├──mixin.scss : scss 에서 사용가능한 mixin 코드를 모아놓은 파일
+│   ├──todo.scss : Todo관련 스타일코드
+│   ├──reset.scss : 개발초기 스타일주기 전 모든 기본스타일 초기화
+│   ├──style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
 ├──components: 재사용 가능한 컴포넌트
-│├──atom : 재사용 가능한 컴포넌트 가장 작은 단위
+│   ├──atom : 재사용 가능한 컴포넌트 가장 작은 단위
 ├──pages : 페이지 단위
-│├──Join : 회원가입 페이지
-│├──Login : 로그인 페이지
-│├──Main : 메인 페이지
-│├──Todo : Todo리스트 페이지
+│   ├──Join : 회원가입 페이지
+│   ├──Login : 로그인 페이지
+│   ├──Main : 메인 페이지
+│   ├──Todo : Todo리스트 페이지
 ├──api: API 호출 관련 코드
-│├──client : api관련 axios 관련 기본 설정
+│   ├──client : api관련 axios 관련 기본 설정
 ```
