@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { instance } from "../api/client";
 import TodoItem from "./TodoItem";
 import Button from "./atom/Button";
-// import { disabled } from "../api/disabled";
 
 const TodoList = () => {
   const [getTodoData, setGetTodoData] = useState([]);
   const [todoValue, setTodoValue] = useState("");
-  const [isdisabled, setIsdisabled] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {

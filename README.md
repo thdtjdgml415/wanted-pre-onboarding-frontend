@@ -1,71 +1,80 @@
-# Getting Started with Create React App
+# 6월 프리온보딩 프론트엔드 사전과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 6월차 원티드 프리온보딩 과정에서 진행한 프론트엔드 사전과제입니다. 이 웹 애플리케이션은 사용자가 원하는 기능을 제공하도록 작성되었습니다.
 
-## Available Scripts
+\```
 
-In the project directory, you can run:
+## 개발자 정보
 
-### `npm start`
+- 이름: 송성희
+- 이메일: thdtjdgml415@gmail.com
+- 배포경로 : https://main--delightful-tanuki-e5fef4.netlify.app/
+- 레파지토리주소 : https://github.com/thdtjdgml415/wanted-pre-onboarding-frontend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  \```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 주요 기능
 
-### `npm test`
+1. 로그인
+   > - 이메일과 비밀번호 유효성 검사 진행(이메일 조건 : @ 포함, 비밀번호 조건 : 8자리 이상)
+   > - 유효성 검사 통과시 로그인 버튼 활성화
+   > - 로그인 완료시 /todo 페이지로 이동
+2. 회원가입
+   > - 로그인과 마찬가지로 이메일과 비밀번호 유효성 검사진행
+   > - 유효성 검사 통과시 회원가입 버튼 활성화
+   > - 회원가입 완료시 /signin 로그인 페이지로 이동
+3. Todo
+   > - /todo 페이지 경로로 접속하면 로그인 토큰이 로컬 스토리지에 존재하면 투두리스트 목록 확인 가능 존재하지 않으면 로그인 페이지 리다이렉션
+   > - 투두리스트 개별 수정 삭제버튼 존재하고 수정버튼 클릭시 수정모드
+   > - 수정 input에 입력하고 제출 버튼 클릭시 내용 수정
+   > - 완료 표시 클릭시 반영 새로고침해도 유지
+   > - 삭제버튼 클릭시 리스트 삭제
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 설치 및 실행 방법
 
-### `npm run build`
+1. Git 리포지토리를 클론합니다.
+   \```
+   git clone https://github.com/thdtjdgml415/wanted-pre-onboarding-frontend.git
+   \```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. 필요한 npm 패키지를 설치합니다.
+   \```
+   npm install
+   \```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. 프로젝트를 실행합니다.
+   \```
+   npm start
+   \```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+이제 http://localhost:3000 에서 프로젝트를 확인할 수 있습니다.
 
-### `npm run eject`
+## 기술 스택
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React.js
+- axios
+- SCSS
+- react-router-dom
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 프로젝트 구조
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- src
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# wanted-pre-onboarding-frontend" 
+  - assets: scss 스타일 관련 페이지
+    > button.scss : 버튼 공통 스타일코드
+    > join.scss : 회원가입 관련 스타일코드
+    > login.scss : 로그인 관련 스타일코드
+    > main.scss : 메인화면 관련 스타일코드
+    > mixin.scss : scss 에서 사용가능한 mixin 코드를 모아놓은 파일
+    > todo.scss : Todo관련 스타일코드
+    > reset.scss : 개발초기 스타일주기 전 모든 기본스타일 초기화
+    > style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
+  - components: 재사용 가능한 컴포넌트
+    > atom : 재사용 가능한 컴포넌트 가장 작은 단위
+  - pages : 페이지 단위
+    > Join : 회원가입 페이지
+    > Login : 로그인 페이지
+    > Main : 메인 페이지
+    > Todo : Todo리스트 페이지
+  - api: API 호출 관련 코드
+    > client : api관련 axios 관련 기본 설정
