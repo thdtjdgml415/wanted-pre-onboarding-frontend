@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TodoList from "../components/TodoList";
+import TodoList from "../molecules/TodoList";
 
 function Todo() {
   const navigate = useNavigate();
-  // console.log("Auth", localStorage.getItem("token"));
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/signin");

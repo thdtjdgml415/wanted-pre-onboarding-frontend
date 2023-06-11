@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { instance } from "../api/client";
+import { instance } from "../../api/client";
 
 function Join() {
   const [joinValue, setJoinValue] = useState({
@@ -10,7 +10,7 @@ function Join() {
   const { joinEmail, joinPwd } = joinValue;
   const [isbuttonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
-  // console.log(joinValue);
+  console.log(joinValue);
 
   const movePage = () => {
     navigate("/signin", { replace: true });
@@ -29,6 +29,7 @@ function Join() {
   }, [navigate, isToken]);
 
   const handleJoinInput = (e) => {
+    // console.log(e);
     const { value, name } = e.target;
     setJoinValue({ ...joinValue, [name]: value });
   };
@@ -106,7 +107,8 @@ function Join() {
             onChange={handleJoinInput}
           />
         </div>
-        <button id="joinBtn" data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleJoin}>
+        <div></div>
+        <button className={"Btn big"} data-testid="signup-button" disabled={!isbuttonDisabled} onClick={handleJoin}>
           회원가입
         </button>
       </div>

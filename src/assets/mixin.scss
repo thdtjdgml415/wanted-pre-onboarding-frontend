@@ -5,6 +5,7 @@
 }
 
 @mixin colum {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -22,12 +23,12 @@
   border: none;
   cursor: pointer;
   font-weight: 600;
-  margin-left: 10px;
   color: #fff;
   font-size: 1.1rem;
   &.small {
     width: 60px;
     height: 30px;
+    margin-left: 10px;
   }
   &.big {
     width: 207px;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Button from "./atom/Button";
-import { instance } from "../api/client";
+import Button from "../atom/Button";
+import { instance } from "../../api/client";
+import Input from "../atom/Input";
 
 const TodoItem = ({ data, onDelete, updateTodoList }) => {
   const [isTodoCompleted, setIsTodoCompleted] = useState(data.isCompleted);
@@ -55,16 +56,16 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
   return (
     <li>
       <label>
-        <input type="checkbox" checked={data.isCompleted} onChange={handleComplete} className="todoCheck"></input>
-        {isEditing ? <input value={updateData} onChange={handleEditChange} /> : <span>{data?.todo}</span>}
+        <Input type={"checkbox"} checked={data.isCompleted} onChange={handleComplete} className={"todoCheck"}></Input>
+        {isEditing ? <Input value={updateData} onChange={handleEditChange} /> : <span>{data?.todo}</span>}
       </label>
       <div className="todoBtnWrap">
         {isEditing ? (
-          <Button classnames={"Btn small"} type="text" data-testid="submit-button" onClick={handleEditSubmit}>
+          <Button classnames={"Btn small"} type="text" data={"submit-button"} onClick={handleEditSubmit}>
             제출
           </Button>
         ) : (
-          <Button classnames={"Btn small"} data-testid="modify-button" onClick={handleEditClick}>
+          <Button classnames={"Btn small"} data={"modify-button"} onClick={handleEditClick}>
             수정
           </Button>
         )}
@@ -72,7 +73,7 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
         {isEditing ? (
           <Button
             classnames={"Btn small"}
-            data-testid="cancel-button"
+            data="cancel-button"
             onClick={() => {
               setIsEditing(false);
             }}
@@ -80,7 +81,7 @@ const TodoItem = ({ data, onDelete, updateTodoList }) => {
             취소
           </Button>
         ) : (
-          <Button classnames={"Btn small"} data-testid="delete-button" onClick={deleteTodo}>
+          <Button classnames={"Btn small"} data={"delete-button"} onClick={deleteTodo}>
             삭제
           </Button>
         )}

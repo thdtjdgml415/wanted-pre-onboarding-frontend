@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { instance } from "../api/client";
-import Button from "../components/atom/Button";
+import { instance } from "../../api/client";
 
 function Login() {
   const [loginValue, setLoginValue] = useState({
@@ -113,9 +112,9 @@ function Login() {
             회원가입
           </div>
         </div>
-        <Button classnames={"Btn big"} data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleLogin}>
+        <button className="Btn big" data-testid="signin-button" disabled={!isbuttonDisabled} onClick={handleLogin}>
           로그인
-        </Button>
+        </button>
       </div>
     </section>
   );

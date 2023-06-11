@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { instance } from "../api/client";
+import { instance } from "../../api/client";
 import TodoItem from "./TodoItem";
-import Button from "./atom/Button";
+import Button from "../atom/Button";
+import Input from "../atom/Input";
 
 const TodoList = () => {
   const [getTodoData, setGetTodoData] = useState([]);
@@ -63,8 +64,8 @@ const TodoList = () => {
   return (
     <>
       <div>
-        <input className="addTodoListInput" value={todoValue} onChange={addTodoList} data-testid="new-todo-input" />
-        <Button classnames={"Btn small"} attr="new-todo-add-button" onClick={addTodoBtn}>
+        <Input className={"addTodoListInput"} value={todoValue} onChange={addTodoList} attr={"new-todo-input"} />
+        <Button classnames={"Btn small"} data={"new-todo-add-button"} onClick={addTodoBtn}>
           추가
         </Button>
       </div>
