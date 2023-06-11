@@ -7,8 +7,8 @@
 ```
 - 이름: 송성희
 - 이메일: thdtjdgml415@gmail.com
-- 배포경로 : <https://main--delightful-tanuki-e5fef4.netlify.app>
-- 레파지토리주소 : <https://github.com/thdtjdgml415/wanted-pre-onboarding-frontend>
+- 배포경로 : https://main--delightful-tanuki-e5fef4.netlify.app
+- 레파지토리주소 : https://github.com/thdtjdgml415/wanted-pre-onboarding-frontend
 ```
 
 ## 주요 기능
@@ -82,6 +82,6 @@ src
 │      ├──Login : 로그인 페이지
 │      ├──Main : 메인 페이지
 │      └──Todo : Todo리스트 페이지
-├──api: API 호출 관련 코드
-    └──client : api관련 axios 관련 기본 설정
+└──api: API 호출 관련 코드
+    └──client : api관련 axios 관련 기본 설정 및 헤더에 토큰값 자동추가 코드
 ```
