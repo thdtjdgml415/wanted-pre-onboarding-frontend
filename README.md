@@ -2,16 +2,14 @@
 
 이 프로젝트는 6월차 원티드 프리온보딩 과정에서 진행한 프론트엔드 사전과제입니다. 이 웹 애플리케이션은 사용자가 원하는 기능을 제공하도록 작성되었습니다.
 
-\```
-
 ## 개발자 정보
 
+```
 - 이름: 송성희
 - 이메일: thdtjdgml415@gmail.com
 - 배포경로 : https://main--delightful-tanuki-e5fef4.netlify.app/
 - 레파지토리주소 : https://github.com/thdtjdgml415/wanted-pre-onboarding-frontend
-
-  \```
+```
 
 ## 주요 기능
 
@@ -33,19 +31,22 @@
 ## 설치 및 실행 방법
 
 1. Git 리포지토리를 클론합니다.
-   \```
+
+   ```
    git clone https://github.com/thdtjdgml415/wanted-pre-onboarding-frontend.git
-   \```
+   ```
 
 2. 필요한 npm 패키지를 설치합니다.
-   \```
+
+   ```
    npm install
-   \```
+   ```
 
 3. 프로젝트를 실행합니다.
-   \```
+
+   ```
    npm start
-   \```
+   ```
 
 이제 http://localhost:3000 에서 프로젝트를 확인할 수 있습니다.
 
@@ -58,23 +59,24 @@
 
 ## 프로젝트 구조
 
-- src
-
-  - assets: scss 스타일 관련 페이지
-    > button.scss : 버튼 공통 스타일코드
-    > join.scss : 회원가입 관련 스타일코드
-    > login.scss : 로그인 관련 스타일코드
-    > main.scss : 메인화면 관련 스타일코드
-    > mixin.scss : scss 에서 사용가능한 mixin 코드를 모아놓은 파일
-    > todo.scss : Todo관련 스타일코드
-    > reset.scss : 개발초기 스타일주기 전 모든 기본스타일 초기화
-    > style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
-  - components: 재사용 가능한 컴포넌트
-    > atom : 재사용 가능한 컴포넌트 가장 작은 단위
-  - pages : 페이지 단위
-    > Join : 회원가입 페이지
-    > Login : 로그인 페이지
-    > Main : 메인 페이지
-    > Todo : Todo리스트 페이지
-  - api: API 호출 관련 코드
-    > client : api관련 axios 관련 기본 설정
+```bash
+src
+├──assets: scss 스타일 관련 페이지
+│├──button.scss : 버튼 공통 스타일코드
+│├──join.scss : 회원가입 관련 스타일코드
+│├──login.scss : 로그인 관련 스타일코드
+│├──main.scss : 메인화면 관련 스타일코드
+│├──mixin.scss : scss 에서 사용가능한 mixin 코드를 모아놓은 파일
+│├──todo.scss : Todo관련 스타일코드
+│├──reset.scss : 개발초기 스타일주기 전 모든 기본스타일 초기화
+│├──style.scss : scss 파일을 한곳에 모아 index.js 파일에 style.scss 임포트
+├──components: 재사용 가능한 컴포넌트
+│├──atom : 재사용 가능한 컴포넌트 가장 작은 단위
+├──pages : 페이지 단위
+│├──Join : 회원가입 페이지
+│├──Login : 로그인 페이지
+│├──Main : 메인 페이지
+│├──Todo : Todo리스트 페이지
+├──api: API 호출 관련 코드
+│├──client : api관련 axios 관련 기본 설정
+```
