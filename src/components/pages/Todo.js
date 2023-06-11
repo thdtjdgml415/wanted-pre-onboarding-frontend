@@ -14,6 +14,10 @@ function Todo() {
   const GoBack = () => {
     navigate("/");
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/signin");
+  };
 
   return (
     <>
@@ -22,9 +26,13 @@ function Todo() {
           <div className="back" onClick={GoBack}>
             뒤로
           </div>
+          <div className="logout" onClick={handleLogout}>
+            로그아웃
+          </div>
           <div className="todoHeader">
             <h1>Todo</h1>
           </div>
+
           <div className="todoInner">
             <TodoList />
           </div>

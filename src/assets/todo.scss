@@ -3,6 +3,7 @@
   height: 500px;
   text-align: center;
   background-color: #fff;
+  position: relative;
   .back {
     width: 40px;
     height: 35px;
@@ -10,6 +11,18 @@
     @include center;
     border: 1px solid #000;
     font-size: 0.9rem;
+
+    &:hover {
+      background-color: #da5a4f;
+    }
+  }
+  .logout {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    border: 1px solid #000;
+    padding: 10px 0;
 
     &:hover {
       background-color: #da5a4f;
